@@ -7,6 +7,7 @@ module.exports = async client => {
         const cmd = require(cmdFile);
 
         if (!cmd.name) return console.log(`Command non-chargée: pas de nom ↓\nFichier -> ${cmdFile}`)
+        if (!cmd.description) return console.log(`Command non-chargée: pas de description ↓\nFichier -> ${cmdFile}`)
 
         client.commands.set(cmd.name, cmd);
         console.log(`Command loaded: ${cmd.name}`);

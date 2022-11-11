@@ -6,4 +6,15 @@ client.commands = new Collection();
 
 ['CommandUtil', 'EventUtil'].forEach(handler => { require(`./utils/handlers/${handler}`)(client) });
 
+process.on('exit', code => { console.log(`Le processus s'est arrêté avec le code! ${code} !`)})
+process.on('uncaughtException', (err, origin) => {
+    console.log(`UNCAUGHT_EXCEPTION: ${err}`)
+    console.error(`Origine: ${origin}`)
+})
+process.on('unhandledRejection', (reason, promise) => {
+    console.log(`UNHANLED_REJECTION: ${reason}`)
+    console.log(promise)
+})
+process.on('warning',(...args) => console.log(...args))
+
 client.login(process.env.DISCORD_TOKEN);

@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js')
 module.exports = {
     name: 'ping',
     description: 'La commande ping renvoie la latence du bot et de l\'API',
-    runSlash: (client, interaction) => {
+    runInteraction: (client, interaction) => {
         const embed = new EmbedBuilder()
             .setTitle('🏓 Pong!')
             .setThumbnail(client.user.displayAvatarURL())

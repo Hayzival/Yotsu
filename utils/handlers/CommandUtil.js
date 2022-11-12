@@ -8,6 +8,13 @@ module.exports = async client => {
 
         if (!cmd.name) return console.log(`Command non-chargée: pas de nom ↓\nFichier -> ${cmdFile}`)
         if (!cmd.description && cmd.type != 2 ) return console.log(`Command non-chargée: pas de description ↓\nFichier -> ${cmdFile}`)
+        if (!cmd.permissions) return console.log(`Command non-chargée: pas de permission ↓\nFichier -> ${cmdFile}`);
+
+        cmd.permissions.forEach(permission => {
+            if (!permissionList.includes(permission)) {
+                return console.log(`Commande non-chargée: erreur de typo sur la permission '${permission}' ↓\nFichier -> ${cmdFile}`)
+            }
+        })
 
         client.commands.set(cmd.name, cmd);
         console.log(`Command loaded: ${cmd.name}`);

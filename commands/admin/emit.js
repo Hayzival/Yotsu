@@ -1,6 +1,7 @@
 module.exports = {
     name: 'emit',
     description: 'Emettre un évènement de votre choix',
+    permissions: ['ADMINISTRATOR'],
     options: [{
         name: 'event',
         description: 'Choisir un événement à émettre',

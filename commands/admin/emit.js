@@ -1,5 +1,6 @@
 module.exports = {
     name: 'emit',
+    category: 'admin',
     description: 'Emettre un évènement de votre choix',
     permissions: ['ADMINISTRATOR'],
     options: [{

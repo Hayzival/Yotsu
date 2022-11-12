@@ -2,6 +2,7 @@ const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
     name: 'ping',
+    category: 'utils',
     permissions: ['SEND_MESSAGES'],
     description: 'La commande ping renvoie la latence du bot et de l\'API',
     async runInteraction(client, interaction) {

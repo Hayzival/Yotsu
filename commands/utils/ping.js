@@ -3,17 +3,19 @@ const { EmbedBuilder } = require('discord.js')
 module.exports = {
     name: 'ping',
     description: 'La commande ping renvoie la latence du bot et de l\'API',
-    runInteraction: (client, interaction) => {
+    async runInteraction(client, interaction) {
+        const tryPong = await interaction.reply({ content: "On essaye de pong... un instant !", fetchReply: true})
+    
         const embed = new EmbedBuilder()
             .setTitle('🏓 Pong!')
             .setThumbnail(client.user.displayAvatarURL())
             .addFields(
-                { name: 'Latence API', value: `\`\`\`${client.ws.ping}ms\`\`\``, inline: true },
-                { name: 'Uptime', value: `<t:${parseInt(client.readyTimestamp / 1000)}:R>`, inline: true }
+            { name: 'Latence API', value: `\`\`\`${client.ws.ping}ms\`\`\``, inline: true },
+            { name: 'Latence BOT', value: `\`\`\`${tryPong.createdTimestamp - interaction.createdTimestamp}ms\`\`\``, inline: true }
             )
             .setTimestamp()
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.displayAvatarURL() })
-
-        interaction.reply({embeds: [embed]})
-    } 
+            
+        interaction.editReply({ content: ' ', embeds: [embed]})
+    }
 };  

@@ -1,10 +1,13 @@
-const { EmbedBuilder } = require('discord.js')
+const { EmbedBuilder, ApplicationCommandType } = require('discord.js')
 
 module.exports = {
     name: 'userinfo',
-    category: 'users',
+    category: 'contextuel',
     permissions: ['SEND_MESSAGES'],
-    type: 2,
+    ownerOnly: false,
+    usage: 'userinfo',
+    examples: ['userinfo'],
+    type: ApplicationCommandType.User,
     async runInteraction(client, interaction) {
         const member = await interaction.guild.members.fetch(interaction.targetId)
         
